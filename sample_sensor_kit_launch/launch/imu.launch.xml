@@ -6,10 +6,9 @@
 
     <group>
       <push-ros-namespace namespace="xsens"/>
-      <node pkg="bluespace_ai_xsens_mti_driver" name="tag_serial_driver" exec="tag_serial_driver" if="$(var launch_driver)">
-        <remap from="imu/data_raw" to="imu_raw"/>
-        <param name="port" value="/dev/imu"/>
-        <param name="imu_frame_id" value="xsens/imu_link"/>
+      <node pkg="bluespace_ai_xsens_mti_driver" exec="xsens_mti_node">
+        <remap from="imu/data" to="imu_raw"/>
+        <param from="$(find-pkg-share bluespace_ai_xsens_mti_driver)/param/xsens_mti_node.yaml"/>
       </node>
     </group>
 
